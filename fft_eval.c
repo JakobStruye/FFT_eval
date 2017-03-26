@@ -862,18 +862,20 @@ static void graphics_main(char *name, char *fontdir)
 		case SDL_KEYDOWN:
 			switch (event.key.keysym.sym) {
 			case SDLK_LEFT:
-				if (highlight > 0) {
+				if (highlight > 0)
 					highlight--;
-					scroll = 0;
-					change = 1;
-				}
+				else
+					highlight = scanresults_n - 1;
+				scroll = 0;
+				change = 1;
 				break;
 			case SDLK_RIGHT:
-				if (highlight < scanresults_n - 1){
+				if (highlight < scanresults_n - 1)
 					highlight++;
-					scroll = 0;
-					change = 1;
-				}
+				else
+					highlight = 0;
+				scroll = 0;
+				change = 1;
 				break;
 			case SDLK_PAGEUP:
 				accel-= 2;
